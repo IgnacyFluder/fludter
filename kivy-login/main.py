@@ -79,8 +79,8 @@ class LayoutApp(MDApp):
     def build(self):
 		#by using a manager you can add multiple screens and switch around them easly
         manager = ScreenManager(transition=NoTransition())
-        self.theme_cls.theme_style = "Dark"
-        manager.add_widget(LoginScreen('self.theme_cls'))
+        self.theme_cls.theme_style = "Light"
+        manager.add_widget(LoginScreen(self.theme_cls))
 
         return manager
     #this makes sure that the label wll be white on dark theme and black on light theme

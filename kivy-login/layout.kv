@@ -1,0 +1,89 @@
+#:kivy 2.0.0
+#:import HexColor kivy.utils.get_color_from_hex
+#:import * kivymd.uix.textfield 
+#:import * kivymd.uix.button
+#:import toast kivymd.toast
+#:import FloatLayout kivy.uix.floatlayout 
+#:import BoxLayout kivy.uix.boxlayout 
+#:import AnchorLayout kivy.uix.anchorlayout 
+#:import ScreenManager kivy.uix.screenmanager
+#:import MDTransitionBase kivymd.uix.transition.transition
+#:import Window kivy.core.window.Window
+
+<LoginScreen>:
+    name: "login"
+    AnchorLayout:
+        id: al
+        BoxLayout:
+            id: bl
+            orientation: 'vertical'
+            size_hint: None, None
+            size: dp(400), dp(500)
+            spacing: dp(20)
+            padding: dp(20)
+
+            Label:
+                text: 'SuperApp'
+                font_name:'FreeSans'
+                color: HexColor(app.get_color_for_theme("#000000"))
+                font_size: '60sp'
+                bold: True
+                size_hint_y: 0.1
+
+            MDTextField:
+                id: email_input
+                hint_text: 'Email'
+                icon_left: 'email'
+                icon_left_color: app.theme_cls.primary_color
+                size_hint_y: 0
+
+            MDTextField:
+                id: password_input
+                hint_text: 'Password'
+                icon_left: 'lock'
+                icon_left_color: app.theme_cls.primary_color
+                size_hint_y: 0
+                password: True
+
+            MDRaisedButton:
+                text: 'Connect'
+                font_size: 17
+                on_release: root.show_alert_dialog(root.do_login)
+                pos_hint: {"x":0.375, "y":0.25}
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: (225, 0)
+            spacing: dp(20)
+            padding: dp(20)
+
+
+            MDIconButton:
+                icon: 'google'
+                user_font_size: '24sp'
+                size_hint_x: None
+                width: dp(48)
+                #md_bg_color: HexColor('#ffffff')
+                ripple_behavior: True
+                
+                on_release: root.show_alert_dialog(root.do_google_login)
+
+            MDIconButton:
+                icon: 'facebook'
+                user_font_size: '24sp'
+                size_hint_x: None
+                width: dp(48)
+                #md_bg_color: HexColor('#ffffff')
+                ripple_behavior: True
+                on_release: root.show_alert_dialog(root.do_facebook_login)
+
+            MDIconButton:
+                icon: 'apple'
+                disabled: False
+                user_font_size: '24sp'
+                size_hint_x: None
+                width: dp(48)
+                #md_bg_color: HexColor('#ffffff')
+                ripple_behavior: True
+                on_release: root.show_alert_dialog(root.do_apple_login)

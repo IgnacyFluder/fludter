@@ -1,2 +1,2 @@
 # Fludter
-Projects from my blog https://fludter.blogspot.com
+Projects from my blog https://fludter.com
